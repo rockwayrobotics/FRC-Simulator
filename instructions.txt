@@ -1,0 +1,38 @@
+Setup:
+Make sure you can run the simulator, and that the value of "level" in Constants.java is set to 1.
+Each time you finish a level, increase this by 1 to start the next level.
+
+Level 1:
+You may only modify DriveCommands.java in the java/frc/robot/commands/level1 folder.
+Can you make the robot strafe sideways?
+
+Level 2:
+You may only modify DriveCommands.java in the java/frc/robot/commands/level2 folder.
+Can you make the robot rotate in place? Or drive while rotating?
+
+Level 3:
+You may only modify DriveCommands.java in the java/frc/robot/commands/level3 folder.
+The robot needs to go faster. And spin faster.
+
+Level 4:
+You may modify DriveCommands.java in the java/frc/robot/commands/level4 folder and also
+RobotContainer.java. Be careful - you probably only want to modify the configureNewBindings function.
+The robot now does something when you press the controller button "A" (keyboard simulator is probably "z").
+Does it do the right thing?
+And can you make it do something when you press a different button - how about turning around a bit if "Y" is pressed?
+
+Level 5:
+You may modify RobotContainer.java, but only the configureLevel5Bindings function.
+There's an area on the field where the robot needs to be very careful. Can you make it so the driver
+can hold "A" and the robot will move at 20% speed?
+
+Level 6:
+Uh... complain that the level author hasn't gotten around to this yet.
+Some ideas:
+- how does field-relative movement work on Red alliance vs Blue alliance?
+- can you write a command that turns the robot to face a specific direction when a button is pressed?
+- can you write a command that makes the robot move to a specific location on the field?
+- can you write a command that makes the robot move, then stop, then move again?
+- can you write a fancy command that combines these and make the robot follow a path?
+- ... PID tuning?
+
