@@ -41,10 +41,46 @@ public class DriveCommands {
     return new RunCommand(
             () -> {
               double max = drive.getMaxLinearSpeedMetersPerSec();
-              ChassisSpeeds speeds = new ChassisSpeeds(0, max * 0.5, 0);
+              ChassisSpeeds speeds = new ChassisSpeeds(max * 0.25, 0, 0);
               drive.runVelocity(ChassisSpeeds.fromFieldRelativeSpeeds(speeds, drive.getRotation()));
             },
             drive)
         .withTimeout(2.0);
+  }
+
+  public static Command driveForwardandDown(Drive drive) {
+    return new RunCommand(
+            () -> {
+              double max = drive.getMaxLinearSpeedMetersPerSec();
+              ChassisSpeeds speeds = new ChassisSpeeds(max * 0.25, 0, 0);
+              drive.runVelocity(ChassisSpeeds.fromFieldRelativeSpeeds(speeds, drive.getRotation()));
+            },
+            drive)
+        .withTimeout(2.0);
+  }
+
+  public static Command driveDown(Drive drive) {
+    Command cmd1 =
+        new RunCommand(
+                () -> {
+                  double max = drive.getMaxLinearSpeedMetersPerSec();
+                  ChassisSpeeds speeds = new ChassisSpeeds(max * 0.25, max * 0.25, 0);
+                  drive.runVelocity(
+                      ChassisSpeeds.fromFieldRelativeSpeeds(speeds, drive.getRotation()));
+                },
+                drive)
+            .withTimeout(2.0);
+
+    Command cmd2 =
+        new RunCommand(
+                () -> {
+                  double max = drive.getMaxLinearSpeedMetersPerSec();
+                  ChassisSpeeds speeds = new ChassisSpeeds(0, max * 0.25, 0);
+                  drive.runVelocity(
+                      ChassisSpeeds.fromFieldRelativeSpeeds(speeds, drive.getRotation()));
+                },
+                drive)
+            .withTimeout(2.0);
+    return cmd1.andThen(cmd2);
   }
 }

@@ -28,7 +28,7 @@ public class DriveCommands {
         () -> {
           // Convert to field relative speeds & send command
           ChassisSpeeds speeds =
-              new ChassisSpeeds(xSupplier.getAsDouble(), ySupplier.getAsDouble(), 0);
+              new ChassisSpeeds(xSupplier.getAsDouble(), ySupplier.getAsDouble(), 10);
           drive.runVelocity(ChassisSpeeds.fromFieldRelativeSpeeds(speeds, drive.getRotation()));
         },
         drive);

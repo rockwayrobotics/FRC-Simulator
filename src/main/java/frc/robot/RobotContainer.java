@@ -91,10 +91,19 @@ public class RobotContainer {
   private void configureL4Bindings() {
     // Drive forward autonomous command when A button is pressed
     controller.a().onTrue(DriveCommands.driveForward(drive));
+    controller.y().onTrue(DriveCommands.driveDown(drive));
   }
 
   private void configureL5Bindings() {
-    // Hint:
-    // controller.a()... // call slowModeDrive when pressed
+
+    controller
+        .a()
+        .whileTrue(
+            DriveCommands.slowModeDrive(
+                drive,
+                () -> -controller.getLeftY(),
+                () -> -controller.getLeftX(),
+                () -> -controller.getRightX(),
+                0.2));
   }
 }

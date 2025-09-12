@@ -54,6 +54,15 @@ public class DriveCommands {
     }
   }
 
+  public static Command driveDown(Drive drive) {
+    switch (Constants.level) {
+      case 4:
+        return frc.robot.commands.level4.DriveCommands.driveDown(drive);
+      default:
+        return null;
+    }
+  }
+
   public static Command slowModeDrive(
       Drive drive,
       DoubleSupplier xSupplier,

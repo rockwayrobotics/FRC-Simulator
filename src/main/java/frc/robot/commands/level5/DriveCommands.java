@@ -45,7 +45,7 @@ public class DriveCommands {
     return Commands.run(
         () -> {
           double x = xSupplier.getAsDouble() * scale;
-          double y = ySupplier.getAsDouble();
+          double y = ySupplier.getAsDouble() * scale;
           double omega = omegaSupplier.getAsDouble();
           ChassisSpeeds speeds =
               new ChassisSpeeds(
